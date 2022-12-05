@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.dto.UserDto;
-import com.example.demo.form.UserForm;
+import com.example.demo.dto.TestDto;
+import com.example.demo.form.TestForm;
 import com.example.demo.service.SampleService;
 
 @Controller
@@ -19,20 +19,20 @@ public class SampleController {
 	    private SampleService service;
 
 	    @ModelAttribute
-	    private UserForm form() {
-	        return new UserForm();
+	    private TestForm form() {
+	        return new TestForm();
 	    }
 
 	    @RequestMapping("/")
 	    public String index(Model model) {
-	        List<UserDto> dto = service.show();
+	        List<TestDto> dto = service.show();
 	        model.addAttribute("dto", dto);
 	        return "sample";
 	    }
 
 	    @RequestMapping("/submit")
-	    public String submit(UserForm form) {
-	        UserDto dto = new UserDto();
+	    public String submit(TestForm form) {
+	        TestDto dto = new TestDto();
 	        dto.setName(form.getName());
 	        dto.setEmail(form.getEmail());
 	        service.register(dto);

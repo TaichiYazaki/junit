@@ -1,13 +1,14 @@
-package com.example.demo.form;
+package com.example.demo.dto;
 
 import lombok.Data;
 
 @Data
-public class UserForm {
-
+public class TestDto {
+	
 	private Integer id;
 	
 	private String name;
 	
 	private String email;
+
 }

@@ -12,7 +12,7 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import com.example.demo.CsvDataSetLoader;
-import com.example.demo.dto.UserDto;
+import com.example.demo.dto.TestDto;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.TransactionDbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
@@ -36,7 +36,7 @@ public class SampleServiceTest {
 	@Test
 	@DatabaseSetup("/testdata/init-data")
 	void 想定する件数を取得します() {
-		List<UserDto> dto = service.show();
+		List<TestDto> dto = service.show();
 		assertEquals(3, dto.size());
 	}
 	
@@ -44,8 +44,8 @@ public class SampleServiceTest {
     @DatabaseSetup("/testdata/init-data/")
     @ExpectedDatabase(value = "/testdata/after-delete-data/", assertionMode = DatabaseAssertionMode.NON_STRICT)
     void データを1件削除します() {
-       service.deleteById(2);
-       List<UserDto> dto = service.show();
+       service.deleteById(3);
+       List<TestDto> dto = service.show();
       Assertions.assertEquals(2,dto.size());
     }
 }
